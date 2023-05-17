@@ -1,4 +1,4 @@
-// app/components/ButtonTheme.tsx
+// infrastructure/ui/components/ButtonTheme.tsx
 
 import { useCallback, useEffect, useRef } from 'react'
 import { BiMoon, BiSun } from 'react-icons/bi'

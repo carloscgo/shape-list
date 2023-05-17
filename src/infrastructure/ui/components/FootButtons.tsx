@@ -1,8 +1,8 @@
-// infrastructure/ui/FootButtons.tsx
+// infrastructure/ui/components/FootButtons.tsx
 
-import { Link } from 'react-router-dom'
 import { RiLoaderFill, RiCheckFill, RiArrowGoBackFill } from 'react-icons/ri'
-import { useTranslation } from './utils/i18n'
+import { useTranslation } from '../utils/i18n'
+import { Link } from '../utils/routes'
 
 type PropsButton = {
   routeBack: string

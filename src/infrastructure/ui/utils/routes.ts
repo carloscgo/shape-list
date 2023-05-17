@@ -1,20 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// infrastructure/ui/utils/routes.ts
+
+import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom'
 
 const routes = {
   home: '/',
-  products: {
-    list: '/products',
-    new: '/product/new',
-    edit: '/product/edit',
-    details: '/product/details',
-  },
-  orders: {
-    list: '/orders',
-    new: '/order/new',
-    edit: '/order/edit',
-    details: '/order/details',
-  },
+  list: '/',
+  new: '/shape/new',
+  edit: '/shape/edit',
+  details: '/shape/details',
 }
 
 export default routes
-export { BrowserRouter, Routes, Route }
+export { BrowserRouter, Routes, Route, Link, useParams }

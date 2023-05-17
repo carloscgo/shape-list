@@ -1,3 +1,5 @@
+// infrastructure/ui/hooks/useToast.tsx
+
 import { useEffect } from 'react'
 import { Notyf } from 'notyf'
 import { useTranslation } from '../utils/i18n'
@@ -21,21 +23,23 @@ const useToast = (
   const { t } = useTranslation()
 
   useEffect(() => {
-    if (status === Status.loading) {
-      notyf.open({
-        message,
-        type: 'custom',
-        background: '#fff',
-        className: 'text-black',
-      })
-    }
+    if (status) {
+      if (status === Status.loading) {
+        notyf.open({
+          message,
+          type: 'custom',
+          background: '#fff',
+          className: 'text-black',
+        })
+      }
 
-    if (status === Status.success) {
-      notyf.success(success)
-    }
+      if (status === Status.success) {
+        notyf.success(success)
+      }
 
-    if (status === Status.error) {
-      notyf.error(`${t('somethingWentWrong')} - ${error}`)
+      if (status === Status.error) {
+        notyf.error(`${t('somethingWentWrong')} - ${error}`)
+      }
     }
   }, [status, error, success, message, t])
 }

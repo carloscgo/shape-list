@@ -1,3 +1,5 @@
+// infrastructure/ui/hooks/useLocalStorage.tsx
+
 import { useState } from 'react'
 import { Some } from '../../../application'
 

@@ -1,9 +1,9 @@
-// infrastructure/ui/Modal.tsx
+// infrastructure/ui/components/Modal.tsx
 
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { RiQuestionFill } from 'react-icons/ri'
-import { useTranslation } from './utils/i18n'
+import { useTranslation } from '../utils/i18n'
 
 type PropsModal = {
   color: 'red' | 'indigo'

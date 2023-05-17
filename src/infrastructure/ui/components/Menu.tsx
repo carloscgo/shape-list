@@ -1,8 +1,7 @@
-// infrastructure/ui/Menu.tsx
+// infrastructure/ui/components/Menu.tsx
 
-import { Link } from 'react-router-dom'
-import { BiHome, BiStore, BiSpreadsheet } from 'react-icons/bi'
-import routes from './utils/routes'
+import { BiHome, BiStore } from 'react-icons/bi'
+import routes, { Link } from '../utils/routes'
 
 type PropsMenu = {
   maxSidebar: React.MutableRefObject<HTMLDivElement | null>
@@ -16,14 +15,9 @@ const ItemsMenu = [
     icon: <BiHome />,
   },
   {
-    label: 'Products',
-    url: routes.products.list,
+    label: 'Shapes',
+    url: routes.new,
     icon: <BiStore />,
-  },
-  {
-    label: 'Orders',
-    url: routes.orders.list,
-    icon: <BiSpreadsheet />,
   },
 ]
 

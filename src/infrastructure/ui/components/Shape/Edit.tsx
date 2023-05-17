@@ -1,19 +1,19 @@
 // infrastructure/ui/components/Shape/New.tsx
 
-import { useParams } from 'react-router-dom'
 import { useEditShape, useGetShapeById } from '../../../../application'
 import ShapesForm, { FormValues } from './Form'
 import useToast from '../../hooks/useToast'
+import useStatus from '../../hooks/useStatus'
 import { useTranslation } from '../../utils/i18n'
+import { Status } from '../../utils/constants'
+import { useParams } from '../../utils/routes'
 import { IdShape, Shape } from '../../../../domain/models/Shape'
 import { useEffect, useState } from 'react'
-import { Status } from '../../utils/constants'
 
 const Edit = () => {
   const { idShape } = useParams()
   const [values, setValues] = useState<Shape>()
-  const [status, setStatus] = useState<string | null>(null)
-  const [error, setError] = useState<string | undefined>()
+  const { status, setStatus, error, setError } = useStatus()
 
   const { t } = useTranslation()
 
@@ -30,6 +30,7 @@ const Edit = () => {
 
   const onSubmit = (data: FormValues) => {
     setStatus(Status.loading)
+    setError(undefined)
 
     editShapeAction({ id: idShape, ...data })
       .then(() => setStatus(Status.success))

@@ -1,10 +1,10 @@
-// infrastructure/ui/LanguageSelector
+// infrastructure/ui/components/LanguageSelector
 
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { fallbackLanguage, languages, key } from './utils/i18n'
-import useLocalStorage from './hooks/useLocalStorage'
-import styles from './styles/LanguageSelector.module.scss'
+import { fallbackLanguage, languages, key } from '../utils/i18n'
+import useLocalStorage from '../hooks/useLocalStorage'
+import styles from '../styles/LanguageSelector.module.scss'
 
 interface FlagIconProps {
   countryCode: string

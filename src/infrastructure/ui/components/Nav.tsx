@@ -1,8 +1,8 @@
-// infrastructure/ui/Nav.tsx
+// infrastructure/ui/components/Nav.tsx
 
 import { ReactNode, isValidElement } from 'react'
-import { Link } from 'react-router-dom'
 import { MdArrowForwardIos } from 'react-icons/md'
+import { Link } from '../utils/routes'
 
 interface PreviousItem {
   label: string

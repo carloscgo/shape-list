@@ -1,4 +1,4 @@
-// infrastructure/ui/MetaTags.tsx
+// infrastructure/ui/components/MetaTags.tsx
 
 import { Helmet } from 'react-helmet-async'
 

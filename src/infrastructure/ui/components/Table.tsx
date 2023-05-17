@@ -1,11 +1,11 @@
-// infrastructure/ui/Table.tsx
+// infrastructure/ui/components/Table.tsx
 
-import { Link } from 'react-router-dom'
-import { RiDeleteBin2Fill, RiEdit2Fill } from 'react-icons/ri'
-import { useTranslation } from './utils/i18n'
-import Modal from './Modal'
 import { useState } from 'react'
-import { Some } from '../../application'
+import { RiDeleteBin2Fill, RiEdit2Fill } from 'react-icons/ri'
+import { useTranslation } from '../utils/i18n'
+import { Some } from '../../../application'
+import Modal from './Modal'
+import { Link } from '../utils/routes'
 
 interface Values {
   [key: string]: Some

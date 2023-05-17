@@ -1,3 +1,5 @@
+// infrastructure/ui/utils/i18n.ts
+
 import i18n from 'i18next'
 import { useTranslation, initReactI18next } from 'react-i18next'
 import enJSON from '../locales/en.json'

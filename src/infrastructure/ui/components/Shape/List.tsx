@@ -1,96 +1,89 @@
+// infrastructure/ui/components/ShapesTable.tsx
 
-// modules/products/infrastructure/ui/components/ProductsTable.tsx
-
-import { useState } from "react";
-import Table from "../../../../../app/components/Table";
-import Loading from "../../../../../app/components/Loading";
-import useToast from "../../../../../app/hooks/useToast";
-import Pagination from "../../../../../app/components/Pagination";
-import HeaderList from "../../../../../app/components/HeaderList";
-import { formatAmount, useTranslation } from "../../../../../app/utils/i18n";
-import { Some, useDeleteProduct, useGetProducts } from "../../../../application";
-import { IdProduct } from "../../../../domain/models/Shape";
-import { httpAxios } from "../../instances/httpAxios";
-import { productRepository } from "../../../repositories/shapeRepository";
-import routes from "../../utils/routes";
-import { LIMIT, TYPES } from "../../../../../app/utils/constants";
+import Table from '../Table'
+import Loading from '../Loading'
+import useToast from '../../hooks/useToast'
+import useStatus from '../../hooks/useStatus'
+import { formatAmount, useTranslation } from '../../utils/i18n'
+import { Some, useDeleteShape, useGetShapes } from '../../../../application'
+import { IdShape, Shape } from '../../../../domain/models/Shape'
+import routes from '../../utils/routes'
+import { useEffect, useState } from 'react'
+import { Status } from '../../utils/constants'
 
 const List = () => {
-    const [page, setPage] = useState(1);
+  const { t } = useTranslation()
 
-    const { t } = useTranslation();
+  const [values, setValues] = useState<Shape[]>()
+  const { status, setStatus, error, setError } = useStatus()
 
-    const getProducts = productRepository(httpAxios).getProducts;
-    const deleteProduct = productRepository(httpAxios).deleteProduct;
+  const getShapesAction = useGetShapes()
+  const deleteShapeAction = useDeleteShape()
 
-    const getProductsAction = useGetProducts(getProducts, page);
-    const deleteProductAction = useDeleteProduct(deleteProduct);
+  useToast(status, t('deletingShape'), t('successfullyDeleted'), error)
 
-    useToast(deleteProductAction.status, t('deletingProduct'), t('successfullyDeleted'), deleteProductAction.error);
-
-    const actionDelete = (id: IdProduct) => deleteProductAction.mutate({ id, refetch: getProductsAction.refetch });
-
-    const onPage = (page: number, type: string) => {
-        if (type === TYPES.next && getProductsAction.data.length === LIMIT) {
-            setPage(page);
-        }
-
-        if (type === TYPES.previous) {
-            setPage(page);
-        }
+  useEffect(() => {
+    if (getShapesAction) {
+      getShapesAction.then((data: Shape[]) => {
+        setValues(data)
+      })
     }
+  }, [getShapesAction])
 
-    if (getProductsAction.loading) return <Loading />
+  const actionDelete = (id: IdShape) => {
+    setStatus(Status.loading)
+    setError(undefined)
 
-    return (
-        <div className="w-full grid grid-cols-1 gap-4">
-            <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                <HeaderList
-                    title={t('latestProducts')}
-                    description={t('listLatestProducts')}
-                    labelCreate={t('createProduct')}
-                    routeNew={routes.new}
-                />
+    deleteShapeAction(id)
+      .then(() => setStatus(Status.success))
+      .catch((error) => {
+        setError(error)
+        setStatus(Status.error)
+      })
+  }
 
-                {getProductsAction.data && (
-                    <>
-                        <Table
-                            columns={[
-                                {
-                                    key: 'name',
-                                    label: t('name')
-                                },
-                                {
-                                    key: 'reference',
-                                    label: t('reference')
-                                },
-                                {
-                                    key: 'price',
-                                    label: t('price')
-                                },
-                                {
-                                    key: 'tax',
-                                    label: t('tax')
-                                },
-                            ]}
-                            values={getProductsAction.data.map((item: Some) => ({
-                                ...item,
-                                price: formatAmount(item.price),
-                                tax: formatAmount(item.tax),
-                            }))}
-                            routesEdit={routes.edit}
-                            keyId=":idProduct"
-                            titleDelete={t('deleteProduct')}
-                            messageDelete={t('messageDeleteProduct')}
-                            actionDelete={actionDelete}
-                        />
+  if (status === Status.loading) return <Loading />
 
-                        <Pagination current={page} length={getProductsAction.data.length} onPage={onPage} />
-                    </>
-                )}
-            </div>
-        </div>
-    )
+  return (
+    <div className="w-full grid grid-cols-1 gap-4">
+      <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+        {values && (
+          <>
+            <Table
+              columns={[
+                {
+                  key: 'name',
+                  label: t('name'),
+                },
+                {
+                  key: 'reference',
+                  label: t('reference'),
+                },
+                {
+                  key: 'price',
+                  label: t('price'),
+                },
+                {
+                  key: 'tax',
+                  label: t('tax'),
+                },
+              ]}
+              values={values.map((item: Some) => ({
+                ...item,
+                price: formatAmount(item.price),
+                tax: formatAmount(item.tax),
+              }))}
+              routesEdit={routes.edit}
+              keyId=":idShape"
+              titleDelete={t('deleteShape')}
+              messageDelete={t('messageDeleteShape')}
+              actionDelete={actionDelete}
+            />
+          </>
+        )}
+      </div>
+    </div>
+  )
 }
 
-export default List;
+export default List

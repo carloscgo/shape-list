@@ -1,10 +1,9 @@
 // application/useGetShapes.ts
 
 import { useIndexDB } from '.'
-import { ShapeRepository } from '../domain/repositories/ShapeRepository'
 
-export const useGetShapes = (getShapes: ShapeRepository['getShapes']) => {
+export const useGetShapes = () => {
   const { getAll } = useIndexDB()
 
-  getAll().then((data) => getShapes(data))
+  return getAll()
 }

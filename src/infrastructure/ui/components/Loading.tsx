@@ -1,6 +1,6 @@
-// infrastructure/ui/Loading.tsx
+// infrastructure/ui/components/Loading.tsx
 
-import { useTranslation } from './utils/i18n'
+import { useTranslation } from '../utils/i18n'
 
 export default function Loading() {
   const { t } = useTranslation()

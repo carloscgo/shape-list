@@ -1,16 +1,16 @@
-// infrastructure/ui/Container.tsx
+// infrastructure/ui/components/Container.tsx
 
-import ProductsNew from './ProductNew'
-import ProductsEdit from './ProductEdit'
-import ProductsTable from './ProductsTable'
-import routes, { Route, Routes } from './utils/routes'
+import ShapesNew from './Shape/New'
+import ShapesEdit from './Shape/Edit'
+import ShapesList from './Shape/List'
+import routes, { Route, Routes } from '../utils/routes'
 
 const Container = () => {
   return (
     <Routes>
-      <Route path={routes.list} element={<ProductsTable />} />
-      <Route path={routes.new} element={<ProductsNew />} />
-      <Route path={routes.edit} element={<ProductsEdit />} />
+      <Route path={routes.new} element={<ShapesNew />} />
+      <Route path={routes.edit} element={<ShapesEdit />} />
+      <Route path={routes.list} element={<ShapesList />} />
     </Routes>
   )
 }

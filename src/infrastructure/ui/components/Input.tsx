@@ -1,7 +1,7 @@
-// infrastructure/ui/Input.tsx
+// infrastructure/uicomponents//Input.tsx
 
 import { ErrorMessage } from '@hookform/error-message'
-import { Some } from '../../application'
+import { Some } from '../../../application'
 
 type PropsInput = {
   register: (name: string, validations: object) => object

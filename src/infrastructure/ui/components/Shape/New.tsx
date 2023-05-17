@@ -1,30 +1,44 @@
-// modules/products/infrastructure/ui/components/ProductsNew.tsx
+// infrastructure/ui/components/ShapesNew.tsx
 
-import { useAddProduct } from '../../../../application';
-import { productRepository } from '../../../repositories/shapeRepository';
-import { httpAxios } from '../../instances/httpAxios';
-import ProductsForm, { FormValues } from './Form';
-import useToast from '../../../../../app/hooks/useToast';
-import { useTranslation } from '../../../../../app/utils/i18n';
+import { useAddShape } from '../../../../application'
+import ShapesForm, { FormValues } from './Form'
+import useToast from '../../hooks/useToast'
+import useStatus from '../../hooks/useStatus'
+import { useTranslation } from '../../utils/i18n'
+import { Status } from '../../utils/constants'
 
 const New = () => {
-    const { t } = useTranslation();
+  const { status, setStatus, error, setError } = useStatus()
 
-    const addProduct = productRepository(httpAxios).addProduct;
+  const { t } = useTranslation()
 
-    const addProductAction = useAddProduct(addProduct);
+  const addShapeAction = useAddShape()
 
-    useToast(addProductAction.status, t('creatingProduct'), t('successfullyCreated'), addProductAction.error);
+  useToast(status, t('creatingShape'), t('successfullyCreated'), error)
 
-    const onSubmit = (data: FormValues, reset: () => void) => {
-        addProductAction.mutate(data);
+  const onSubmit = (data: FormValues, reset: () => void) => {
+    setStatus(Status.loading)
+    setError(undefined)
 
-        reset();
-    }
+    addShapeAction(data)
+      .then(() => {
+        reset()
 
-    return (
-        <ProductsForm title={t('createAnewProduct')} labelSubmit={t('createProduct')} onSubmit={onSubmit} />
-    )
+        setStatus(Status.success)
+      })
+      .catch((error) => {
+        setError(error)
+        setStatus(Status.error)
+      })
+  }
+
+  return (
+    <ShapesForm
+      title={t('createAnewShape')}
+      labelSubmit={t('createShape')}
+      onSubmit={onSubmit}
+    />
+  )
 }
 
-export default New;
+export default New

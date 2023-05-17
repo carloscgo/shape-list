@@ -1,4 +1,7 @@
+// infrastructure/ui/hooks/useIndexDB.tsx
+
 import { useIndexedDB } from 'react-indexed-db'
+import { Store } from '../utils/constants'
 
 const useIndexDB = () => {
   const {
@@ -8,7 +11,7 @@ const useIndexDB = () => {
     add: addRecord,
     update: updateRecord,
     deleteRecord,
-  } = useIndexedDB('shapes')
+  } = useIndexedDB(Store)
 
   return {
     getByID,

@@ -1,4 +1,4 @@
-// infrastructure/ui/ErrorBoundary.tsx
+// infrastructure/ui/components/ErrorBoundary.tsx
 
 import React, { ReactNode } from 'react'
 

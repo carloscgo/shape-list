@@ -1,4 +1,4 @@
-// infrastructure/ui/Layout.tsx
+// infrastructure/ui/components/Layout.tsx
 
 import { useCallback, useRef } from 'react'
 import { HiOutlineSquares2X2 } from 'react-icons/hi2'
@@ -8,7 +8,7 @@ import Menus from './Menu'
 import ButtonTheme from './ButtonTheme'
 import { LanguageSelector } from './LanguageSelector'
 import Container from './Container'
-import styles from './styles/Layout.module.css'
+import styles from '../styles/Layout.module.css'
 
 const appName = import.meta.env.VITE_APP_TITLE
 
