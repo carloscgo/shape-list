@@ -4,7 +4,7 @@ import Table from '../Table'
 import Loading from '../Loading'
 import useToast from '../../hooks/useToast'
 import useStatus from '../../hooks/useStatus'
-import { formatAmount, useTranslation } from '../../utils/i18n'
+import { useTranslation } from '../../utils/i18n'
 import { Some, useDeleteShape, useGetShapes } from '../../../../application'
 import { IdShape, Shape } from '../../../../domain/models/Shape'
 import routes from '../../utils/routes'
@@ -70,8 +70,8 @@ const List = () => {
               ]}
               values={values.map((item: Some) => ({
                 ...item,
-                price: formatAmount(item.price),
-                tax: formatAmount(item.tax),
+                price: item.price,
+                tax: item.tax,
               }))}
               routesEdit={routes.edit}
               keyId=":idShape"

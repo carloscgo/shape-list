@@ -1,16 +1,24 @@
-import React from 'react'
-import { cleanup, render, screen } from '@testing-library/react'
+import {
+  React,
+  render,
+  cleanup,
+  screen,
+  expect,
+  describe,
+  it,
+} from '../setupTest'
 import App from '../src/App'
-import { describe, test, expect } from 'vitest'
 
-describe('', () => {
-  test('renders', () => {
+const appName = process.env.VITE_APP_TITLE as string
+
+describe('App', () => {
+  afterEach(() => cleanup())
+
+  it('renders', () => {
     render(<App />)
 
-    const alertText = screen.getByText('Vite + React')
+    const alertText = screen.getAllByText(appName)[0]
 
     expect(alertText).toBeInTheDocument()
-
-    cleanup()
   })
 })

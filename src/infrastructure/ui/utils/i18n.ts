@@ -16,7 +16,6 @@ export const languages = [
     name: 'Español',
   },
 ]
-
 export const key = 'language'
 export const fallbackLanguage = languages[0]
 
@@ -29,18 +28,8 @@ export default function config() {
       es: { ...esJSON },
     },
     lng: language.key,
-    debug: true,
+    debug: false,
   })
 }
 
-export { useTranslation }
-
-export const formatAmount = (amount: number | string) => {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-  })
-
-  return formatter.format(amount as number)
-}
+export { useTranslation, i18n, initReactI18next }
