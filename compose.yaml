@@ -1,0 +1,10 @@
+version: '3.7'
+name: 'shape-list'
+services:
+  server:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 9231:4173

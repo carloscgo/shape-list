@@ -1,0 +1,33 @@
+// application/index.ts
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Some = any
+
+import { useIndexedDB } from 'react-indexed-db'
+export { useGetShapes } from './useGetShapes'
+export { useGetShapeById } from './useGetShapeById'
+export { useAddShape } from './useAddShape'
+export { useEditShape } from './useEditShape'
+export { useDeleteShape } from './useDeleteShape'
+
+const useIndexDB = () => {
+  const {
+    getByID,
+    getAll,
+    getByIndex,
+    add: addRecord,
+    update: updateRecord,
+    deleteRecord,
+  } = useIndexedDB('shapes')
+
+  return {
+    getByID,
+    getAll,
+    getByIndex,
+    addRecord,
+    updateRecord,
+    deleteRecord,
+  }
+}
+
+export { useIndexDB }

@@ -1,0 +1,26 @@
+{
+  "translation": {
+    "goBack": "Go back",
+    "creating": "Creating...",
+    "actions": "Actions",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "messageWarningDelete": "The data will be permanently removed. This action cannot be undone.",
+    "successfullyCreated": "Successfully created!",
+    "successfullyUpdated": "Successfully updated!",
+    "successfullyDeleted": "Successfully deleted!",
+    "somethingWentWrong": "Something went wrong. Please try again",
+    "name": "Name",
+    "createShape": "Create Shape",
+    "createAnewShape": "Create a new Shape",
+    "creatingShape": "Creating new shape...",
+    "editShape": "Edit Shape",
+    "updateShape": "Update Shape",
+    "editingShape": "Editing shape...",
+    "deletingShape": "Deleting shape...",
+    "deleteShape": "Delete Shape",
+    "listShapes": "This is a list of shapes",
+    "messageDeleteShape": "Are you sure you want to delete this shape?"
+  }
+}
