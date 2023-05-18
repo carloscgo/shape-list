@@ -10,8 +10,8 @@ export const DBConfig = {
       store: Store,
       storeConfig: { keyPath: 'id', autoIncrement: true },
       storeSchema: [
-        { name: 'name', keypath: 'name', options: { unique: false } },
-        { name: 'email', keypath: 'email', options: { unique: false } },
+        { name: 'type', keypath: 'type', options: { unique: false } },
+        { name: 'icon', keypath: 'icon', options: { unique: false } },
       ],
     },
   ],

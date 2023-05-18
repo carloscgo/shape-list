@@ -1,5 +1,6 @@
 // infrastructure/ui/components/ShapesNew.tsx
 
+import { memo } from 'react'
 import { useAddShape } from '../../../../application'
 import ShapesForm, { FormValues } from './Form'
 import useToast from '../../hooks/useToast'
@@ -7,7 +8,7 @@ import useStatus from '../../hooks/useStatus'
 import { useTranslation } from '../../utils/i18n'
 import { Status } from '../../utils/constants'
 
-const New = () => {
+const New = memo(() => {
   const { status, setStatus, error, setError } = useStatus()
 
   const { t } = useTranslation()
@@ -20,16 +21,17 @@ const New = () => {
     setStatus(Status.loading)
     setError(undefined)
 
-    addShapeAction(data)
-      .then(() => {
+    addShapeAction(data).then(
+      () => {
         reset()
 
         setStatus(Status.success)
-      })
-      .catch((error) => {
+      },
+      (error) => {
         setError(error)
         setStatus(Status.error)
-      })
+      }
+    )
   }
 
   return (
@@ -39,6 +41,6 @@ const New = () => {
       onSubmit={onSubmit}
     />
   )
-}
+})
 
 export default New

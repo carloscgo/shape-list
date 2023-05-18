@@ -1,27 +1,30 @@
 // infrastructure/ui/components/Menu.tsx
 
-import { BiHome, BiStore } from 'react-icons/bi'
+import { BiHome, BiShapeCircle } from 'react-icons/bi'
 import routes, { Link } from '../utils/routes'
+import { useTranslation } from '../utils/i18n'
 
 type PropsMenu = {
   maxSidebar: React.MutableRefObject<HTMLDivElement | null>
   miniSidebar: React.MutableRefObject<HTMLDivElement | null>
 }
 
-const ItemsMenu = [
-  {
-    label: 'Home',
-    url: routes.home,
-    icon: <BiHome />,
-  },
-  {
-    label: 'Shapes',
-    url: routes.new,
-    icon: <BiStore />,
-  },
-]
-
 export default function Menu({ maxSidebar, miniSidebar }: PropsMenu) {
+  const { t } = useTranslation()
+
+  const ItemsMenu = [
+    {
+      label: t('Home'),
+      url: routes.home,
+      icon: <BiHome />,
+    },
+    {
+      label: t('Shapes'),
+      url: routes.new,
+      icon: <BiShapeCircle />,
+    },
+  ]
+
   return (
     <>
       <div

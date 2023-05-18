@@ -1,10 +1,17 @@
 // domain/models/Shape.ts
 
+import { Some } from '../../application'
+
 export type IdShape = string | number
+
+export type TypeShape = 'Square' | 'Circle' | 'Triangle'
 
 export type Shape = {
   id: IdShape
-  name: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any
+  shape: {
+    name: string
+    type: TypeShape
+    [key: string]: Some
+  }
+  [key: string]: Some
 }

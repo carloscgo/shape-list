@@ -1,4 +1,31 @@
 {
   "translation": {
+    "goBack": "Regresar",
+    "creating": "Creando...",
+    "actions": "Acciones",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "loading": "Cargando...",
+    "messageWarningDelete": "Los datos serán eliminados permanentemente. Esta acción no se puede deshacer.",
+    "successfullyCreated": "¡Creado exitosamente!",
+    "successfullyUpdated": "¡Actualizado exitosamente!",
+    "successfullyDeleted": "¡Eliminado exitosamente!",
+    "somethingWentWrong": "Algo salió mal. Por favor intenta de nuevo.",
+    "createShape": "Crear Forma",
+    "createAnewShape": "Crear una nueva forma",
+    "creatingShape": "Creando nueva forma...",
+    "editShape": "Editar Forma",
+    "updateShape": "Actualizar forma",
+    "editingShape": "Editando forma...",
+    "deletingShape": "Eliminando forma...",
+    "deleteShape": "Eliminar forma",
+    "listShapes": "Esta es una lista de formas",
+    "messageDeleteShape": "¿Estás seguro que deseas eliminar esta forma?",
+    "Circle": "Círculo",
+    "Square": "Cuadrado",
+    "Triangle": "Triángulo",
+    "Shape Type": "Tipo de forma",
+    "Home": "Inicio",
+    "Shapes": "Formas"
   }
 }

@@ -6,7 +6,6 @@ const routes = {
   home: '/',
   list: '/',
   new: '/shape/new',
-  edit: '/shape/edit',
   details: '/shape/details',
 }
 

@@ -9,6 +9,7 @@ export { useGetShapeById } from './useGetShapeById'
 export { useAddShape } from './useAddShape'
 export { useEditShape } from './useEditShape'
 export { useDeleteShape } from './useDeleteShape'
+import { Store } from '../infrastructure/ui/utils/constants'
 
 const useIndexDB = () => {
   const {
@@ -18,7 +19,7 @@ const useIndexDB = () => {
     add: addRecord,
     update: updateRecord,
     deleteRecord,
-  } = useIndexedDB('shapes')
+  } = useIndexedDB(Store)
 
   return {
     getByID,

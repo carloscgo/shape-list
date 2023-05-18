@@ -1,4 +1,4 @@
-// infrastructure/uicomponents//Input.tsx
+// infrastructure/ui/components//Input.tsx
 
 import { ErrorMessage } from '@hookform/error-message'
 import { Some } from '../../../application'
