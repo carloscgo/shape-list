@@ -60,6 +60,7 @@ export const partRightArray = ({
           index: currentIndex + 1,
         }
       }
+
       return currentValue
     },
     {

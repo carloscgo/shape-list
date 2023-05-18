@@ -3,6 +3,7 @@
 import React, { ReactNode } from 'react'
 
 interface ComponentProps {
+  hasError?: boolean
   children: ReactNode
 }
 
@@ -19,7 +20,7 @@ class ErrorBoundary extends React.Component<ComponentProps, ComponentState> {
     super(props)
 
     // Define a state variable to track whether is an error or not
-    this.state = { hasError: false, error: null }
+    this.state = { hasError: props.hasError || false, error: null }
   }
 
   static getDerivedStateFromError(error: Some) {

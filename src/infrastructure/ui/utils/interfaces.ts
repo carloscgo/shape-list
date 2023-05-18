@@ -1,4 +1,4 @@
-import { DragEvent } from 'react'
+import { DragEvent, ReactNode } from 'react'
 import { Some } from '../../../application'
 import { IdShape, Shape, TypeShape } from '../../../domain/models/Shape'
 
@@ -8,6 +8,7 @@ export type PropsShape = {
   shape: Shape
   onAdd: (position: PositionsT, index: IdShape) => void
   onDelete: (index: IdShape) => void
+  showButton?: boolean
 }
 
 export type PropsShapeList = {
@@ -27,3 +28,14 @@ export type PropsDeleteButton = {
 }
 
 export type DragDropT = DragEvent<HTMLDivElement>
+
+export type PropsModal = {
+  color: 'red' | 'indigo'
+  title: string
+  message?: string
+  children?: ReactNode
+  labelButton: string
+  show: boolean
+  onConfirm: () => void
+  onClose: (show: boolean) => void
+}

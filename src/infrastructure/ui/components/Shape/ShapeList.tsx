@@ -22,7 +22,7 @@ const ShapeList = memo(({ shapes, onAdd, onDelete }: PropsShapeList) => {
 
   return (
     <>
-      <div className="flex w-full p-10 overflow-auto">
+      <div role="list" className="flex w-full p-10 overflow-auto">
         {shapes.map((shape: Shape) => (
           <Item
             key={`${shape.index}${shape.type}-shape`}
@@ -68,6 +68,7 @@ const ShapeList = memo(({ shapes, onAdd, onDelete }: PropsShapeList) => {
           <div className="flex items-center justify-center mx-auto my-10">
             {['Circle', 'Square', 'Triangle'].map((shape) => (
               <div
+                key={shape}
                 className={`cursor-pointer mx-auto rounded-full p-2 ${
                   shapeNew.type === shape ? 'bg-cyan-100' : ''
                 }`}
