@@ -1,59 +1,66 @@
-import { useEffect, useRef } from 'react'
-import { useDrag, useDrop } from 'react-dnd'
-import { ItemT, PropsShape } from '../../utils/interfaces'
+import { useEffect, useRef, useState } from 'react'
+import { PositionsT, PropsShape } from '../../utils/interfaces'
 import iconsShapes from '../../utils/iconShapes'
+import AddButton from './AddButton'
+import DeleteButton from './DeleteButton'
+import { Positions, SizeContainer, SizeShape } from '../../utils/constants'
 
-const type = 'Image'
+const Item = ({ shape, onAdd, onDelete }: PropsShape) => {
+  const [showButtons, setShowButtons] = useState(false)
+  const refButtons = useRef<HTMLDivElement>(null)
 
-const Item = ({ shape, index, moveShape, getIsMoved, onDrag }: PropsShape) => {
-  const ref = useRef(null)
+  const onHover = () => {
+    const elem = refButtons.current
 
-  const [, drop] = useDrop({
-    accept: type,
-    hover(item: ItemT) {
-      if (!ref.current) {
-        return
-      }
+    if (elem) {
+      elem.style.transition = 'scale 2s'
+      elem.style.transform = 'translate(-50%, -50%)'
+      elem.style.scale = '0'
 
-      const dragIndex = item.index
+      const timer = setTimeout(() => {
+        elem.style.scale = '1'
 
-      if (dragIndex === index) {
-        return
-      }
+        clearTimeout(timer)
+      }, 150)
 
-      moveShape(dragIndex, index)
-
-      item.index = index
-    },
-  })
-
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: type,
-    item: { id: shape.id, index },
-    collect: (monitor) => {
-      return {
-        isDragging: monitor.isDragging(),
-      }
-    },
-  }))
-
-  drag(drop(ref))
+      elem.style.display = 'flex'
+    }
+  }
 
   useEffect(() => {
-    getIsMoved(isDragging)
-
-    if (isDragging) {
-      onDrag(shape)
-    }
-  }, [getIsMoved, isDragging, onDrag, shape])
+    showButtons && onHover()
+  }, [showButtons])
 
   return (
-    <div ref={ref} style={{ opacity: isDragging ? 0 : 1 }}>
+    <div
+      className={`relative h-auto w-[${SizeContainer}] flex items-center justify-center px-2 left-0 top-0`}
+    >
+      {showButtons && (
+        <div
+          ref={refButtons}
+          className={`absolute left-[50%] right-[50%] flex items-center justify-center h-auto w-autp`}
+          onMouseMove={() => setShowButtons(true)}
+        >
+          <AddButton
+            className="mt-40 mr-5 ml-0"
+            onAdd={() => onAdd(Positions.left as PositionsT, shape.index)}
+          />
+
+          <DeleteButton onDelete={() => onDelete(shape.index)} />
+
+          <AddButton
+            className="mt-40 ml-5 mr-0"
+            onAdd={() => onAdd(Positions.right as PositionsT, shape.index)}
+          />
+        </div>
+      )}
+
       <div
-        id={`${shape.type}-${shape.id}-${index}`}
-        className="h-[200px] w-[200px] object-cover bg-transparent"
+        className={`h-[${SizeShape}] w-[${SizeShape}] object-cover bg-transparent`}
+        onMouseOver={() => setShowButtons(true)}
+        onMouseOut={() => setShowButtons(false)}
       >
-        {iconsShapes[shape.type]('200px')}
+        {iconsShapes[shape.type](SizeShape)}
       </div>
     </div>
   )

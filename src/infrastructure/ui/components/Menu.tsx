@@ -1,6 +1,6 @@
 // infrastructure/ui/components/Menu.tsx
 
-import { BiHome, BiShapeCircle } from 'react-icons/bi'
+import { BiHome } from 'react-icons/bi'
 import routes, { Link } from '../utils/routes'
 import { useTranslation } from '../utils/i18n'
 
@@ -17,11 +17,6 @@ export default function Menu({ maxSidebar, miniSidebar }: PropsMenu) {
       label: t('Home'),
       url: routes.home,
       icon: <BiHome />,
-    },
-    {
-      label: t('Shapes'),
-      url: routes.new,
-      icon: <BiShapeCircle />,
     },
   ]
 

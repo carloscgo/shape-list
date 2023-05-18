@@ -1,6 +1,6 @@
 // infrastructure/ui/components/Modal.tsx
 
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, ReactNode, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { RiQuestionFill } from 'react-icons/ri'
 import { useTranslation } from '../utils/i18n'
@@ -8,7 +8,8 @@ import { useTranslation } from '../utils/i18n'
 type PropsModal = {
   color: 'red' | 'indigo'
   title: string
-  message: string
+  message?: string
+  children?: ReactNode
   labelButton: string
   show: boolean
   onConfirm: () => void
@@ -19,6 +20,7 @@ export default function Modal({
   color,
   title,
   message,
+  children,
   labelButton,
   show,
   onConfirm,
@@ -93,16 +95,23 @@ export default function Modal({
                         aria-hidden="true"
                       />
                     </div>
-                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <div className="mt-3 w-full text-center sm:mt-0 sm:text-left">
                       <Dialog.Title
                         as="h3"
                         className="text-base font-semibold leading-6 text-gray-900"
                       >
                         {title}
                       </Dialog.Title>
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">{message}</p>
-                      </div>
+
+                      {message && (
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-500">{message}</p>
+                        </div>
+                      )}
+
+                      {children && (
+                        <div className="w-[100%] mx-auto">{children}</div>
+                      )}
                     </div>
                   </div>
                 </div>

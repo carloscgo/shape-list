@@ -107,7 +107,7 @@ export default function Layout() {
 
         <div
           ref={content}
-          className="content ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4"
+          className="content h-screen ml-12 transform ease-in-out duration-500 pt-20 px-2 md:px-5 pb-4"
         >
           <Container />
         </div>
