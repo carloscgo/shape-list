@@ -33,7 +33,6 @@ const List = memo(() => {
           shapes={shapes.map((shape: Shape) => ({
             index: shape.index,
             type: shape.type,
-            icon: iconsShapes[`${shape.type}`],
           }))}
           onAdd={actionAdd}
           onDelete={actionDelete}
