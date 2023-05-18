@@ -3,12 +3,9 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { fallbackLanguage, languages, key } from '../utils/i18n'
+import { FlagIconProps, Language } from '../utils/interfaces'
 import useLocalStorage from '../hooks/useLocalStorage'
 import styles from '../styles/LanguageSelector.module.scss'
-
-interface FlagIconProps {
-  countryCode: string
-}
 
 function FlagIcon({ countryCode = '' }: FlagIconProps) {
   if (countryCode === 'en') {
@@ -20,11 +17,6 @@ function FlagIcon({ countryCode = '' }: FlagIconProps) {
       className={`fi fis ${styles.fiCircle} inline-block mr-2 fi-${countryCode}`}
     />
   )
-}
-
-interface Language {
-  key: string
-  name: string
 }
 
 const LANGUAGE_SELECTOR_ID = 'language-selector'
@@ -71,11 +63,12 @@ export const LanguageSelector = () => {
   }
 
   return (
-    <div className="flex items-center z-40">
+    <div aria-label="language-selector" className="flex items-center z-40">
       <div className="relative inline-block text-left">
         <div>
           <button
             onClick={() => setIsOpen(!isOpen)}
+            role="button"
             type="button"
             className="inline-flex items-center justify-center w-full rounded-md border border-gray-300 dark:border-gray-500 shadow-sm px-4 py-2 bg-white dark:bg-gray-500 hover:shadow-md hover:shadow-sky-100 text-sm font-medium text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
             id={LANGUAGE_SELECTOR_ID}

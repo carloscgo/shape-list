@@ -37,12 +37,7 @@ vi.mock('react-router-dom', async () => {
     useRouteMatch: vi.fn(),
     Link: ({ children, to }: { children: JSX.Element; to: string }) =>
       React.createElement('a', { href: to }, children),
-    Route: () => vi.fn(),
-    Router: () => vi.fn(),
-    Routes: ({ children }: { children: any }) => children,
-    HashRouter: () => vi.fn(),
     Switch: () => vi.fn(),
-    BrowserRouter: ({ children }: { children: any }) => children,
   }
 })
 

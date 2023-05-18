@@ -39,3 +39,12 @@ export type PropsModal = {
   onConfirm: () => void
   onClose: (show: boolean) => void
 }
+
+export interface FlagIconProps {
+  countryCode: string
+}
+
+export interface Language {
+  key: string
+  name: string
+}

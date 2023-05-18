@@ -22,7 +22,8 @@ export const fallbackLanguage = languages[0]
 export default function config() {
   const language = getItemStorage(key, fallbackLanguage)
 
-  i18n.use(initReactI18next).init({
+  i18n.use(initReactI18next)
+  i18n.init({
     resources: {
       en: { ...enJSON },
       es: { ...esJSON },

@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LanguageSelector > should change the language when a different language is selected 1`] = `
+<div>
+  <div
+    aria-label="language-selector"
+    class="flex items-center z-40"
+  >
+    <div
+      class="relative inline-block text-left"
+    >
+      <div>
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="inline-flex items-center justify-center w-full rounded-md border border-gray-300 dark:border-gray-500 shadow-sm px-4 py-2 bg-white dark:bg-gray-500 hover:shadow-md hover:shadow-sky-100 text-sm font-medium text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          id="language-selector"
+          role="button"
+          type="button"
+        >
+          <span
+            class="fi fis _fiCircle_48a92e inline-block mr-2 fi-gb"
+          />
+          English
+          <svg
+            aria-hidden="true"
+            class="-mr-1 ml-2 h-5 w-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clip-rule="evenodd"
+              d="M10.293 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L10 12.586l3.293-3.293a1 1 0 011.414 1.414l-4 4z"
+              fill-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

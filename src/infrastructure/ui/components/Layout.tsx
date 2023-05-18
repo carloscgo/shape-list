@@ -1,6 +1,6 @@
 // infrastructure/ui/components/Layout.tsx
 
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
 import { HiOutlineSquares2X2 } from 'react-icons/hi2'
 
 import MetaTags from './MetaTags'
@@ -9,6 +9,7 @@ import ButtonTheme from './ButtonTheme'
 import { LanguageSelector } from './LanguageSelector'
 import Container from './Container'
 import styles from '../styles/Layout.module.css'
+import useOpenMenu from '../hooks/useOpenMenu'
 
 const appName = import.meta.env.VITE_APP_TITLE
 
@@ -20,46 +21,17 @@ export default function Layout() {
   const logo = useRef<HTMLDivElement>(null)
   const content = useRef<HTMLDivElement>(null)
 
-  const openNav = useCallback(() => {
-    if (!sidebar.current) return
-
-    if (sidebar.current.classList.contains('-translate-x-48')) {
-      // max sidebar
-      sidebar.current.classList.remove('-translate-x-48')
-      sidebar.current.classList.add('translate-x-none')
-      maxSidebar.current && maxSidebar.current.classList.remove('hidden')
-      maxSidebar.current && maxSidebar.current.classList.add('flex')
-      miniSidebar.current && miniSidebar.current.classList.remove('flex')
-      miniSidebar.current && miniSidebar.current.classList.add('hidden')
-      maxToolbar.current && maxToolbar.current.classList.add('translate-x-0')
-      maxToolbar.current &&
-        maxToolbar.current.classList.remove('translate-x-24', 'scale-x-0')
-      logo.current && logo.current.classList.remove('ml-12')
-      content.current && content.current.classList.remove('ml-12')
-      content.current && content.current.classList.add('ml-12', 'md:ml-60')
-    } else {
-      // mini sidebar
-      sidebar.current.classList.add('-translate-x-48')
-      sidebar.current.classList.remove('translate-x-none')
-      maxSidebar.current && maxSidebar.current.classList.add('hidden')
-      maxSidebar.current && maxSidebar.current.classList.remove('flex')
-      miniSidebar.current && miniSidebar.current.classList.add('flex')
-      miniSidebar.current && miniSidebar.current.classList.remove('hidden')
-      maxToolbar.current &&
-        maxToolbar.current.classList.add('translate-x-24', 'scale-x-0')
-      maxToolbar.current && maxToolbar.current.classList.remove('translate-x-0')
-      logo.current && logo.current.classList.add('ml-12')
-      content.current && content.current.classList.remove('ml-12', 'md:ml-60')
-      content.current && content.current.classList.add('ml-12')
-    }
-  }, [sidebar, maxSidebar, miniSidebar, maxToolbar, logo, content])
+  const openNav = useOpenMenu({
+    sidebar,
+    maxSidebar,
+    miniSidebar,
+    maxToolbar,
+    logo,
+    content,
+  })
 
   return (
     <>
-      <noscript>
-        <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
-      </noscript>
-
       <MetaTags />
 
       <div className={`${styles.content} bg-white dark:bg-[#0F172A]`}>

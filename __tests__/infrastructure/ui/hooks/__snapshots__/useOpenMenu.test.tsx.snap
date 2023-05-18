@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Use Open Menu Hook > should toggle classnames when called 1`] = `
+<div>
+  <div
+    aria-label="openNav"
+  >
+    <div
+      class="-translate-x-48"
+    />
+    <div
+      class="hidden"
+    />
+    <div
+      class="flex"
+    />
+    <div
+      class="translate-x-24 scale-x-0"
+    />
+    <div
+      class="ml-12"
+    />
+    <div
+      class="ml-12"
+    />
+  </div>
+</div>
+`;
+
+exports[`Use Open Menu Hook > should toggle classnames when called 2`] = `
+<div>
+  <div
+    aria-label="openNav"
+  >
+    <div
+      class="translate-x-none"
+    />
+    <div
+      class="flex"
+    />
+    <div
+      class="hidden"
+    />
+    <div
+      class="translate-x-0"
+    />
+    <div
+      class=""
+    />
+    <div
+      class="ml-12 md:ml-60"
+    />
+  </div>
+</div>
+`;

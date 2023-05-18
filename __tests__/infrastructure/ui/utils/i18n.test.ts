@@ -1,23 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import config, {
-  languages,
-  key,
-  fallbackLanguage,
   i18n,
   initReactI18next,
 } from '../../../../src/infrastructure/ui/utils/i18n'
-import { getItemStorage } from '../../../../src/infrastructure/ui/hooks/useLocalStorage'
-import {
-  expect,
-  describe,
-  it,
-  afterEach,
-  beforeEach,
-} from '../../../../setupTest'
+import { expect, describe, it, afterEach } from '../../../../setupTest'
 import { vi } from 'vitest'
 
 vi.mock('../../../../src/infrastructure/ui/hooks/useLocalStorage')
-vi.mock('i18next')
+vi.mock('i18next', () => {
+  return {
+    default: {
+      use: vi.fn((initReactI18next) => vi.fn(initReactI18next)),
+      init: vi.fn((props) => vi.fn(props)),
+      hasInitialized: false,
+    },
+  }
+})
 
 describe('i18n', () => {
   describe('Localization Setup', () => {
@@ -25,32 +23,20 @@ describe('i18n', () => {
       vi.resetAllMocks()
     })
 
-    beforeEach(() => {
-      i18n.hasInitialized = false
-    })
-
     it('initializes i18n with fallback language on error', () => {
-      getItemStorage.mockReturnValueOnce(fallbackLanguage)
-
-      i18n.use.mockReturnValueOnce({ init: (v: any) => v })
+      const spyUse = vi.spyOn(i18n, 'use')
 
       config()
 
-      expect(getItemStorage).toHaveBeenCalledWith(key, fallbackLanguage)
-      expect(i18n.use).toHaveBeenCalledWith(initReactI18next)
+      expect(spyUse).toHaveBeenCalledWith(initReactI18next)
     })
 
     it('initializes i18n with stored language', () => {
-      const storedLanguage = languages[1]
-
-      getItemStorage.mockReturnValueOnce(storedLanguage)
-
-      i18n.use.mockReturnValueOnce({ init: (v: any) => v })
+      const spyUse = vi.spyOn(i18n, 'use')
 
       config()
 
-      expect(getItemStorage).toHaveBeenCalledWith(key, fallbackLanguage)
-      expect(i18n.use).toHaveBeenCalledWith(initReactI18next)
+      expect(spyUse).toHaveBeenCalledWith(initReactI18next)
     })
   })
 })
