@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { RiQuestionFill } from 'react-icons/ri'
+import { RiInformationFill } from 'react-icons/ri'
 import { useTranslation } from '../utils/i18n'
 import {
   PropsTransitionChild1,
@@ -58,21 +58,21 @@ export default function Modal({
             <Transition.Child as={Fragment} {...PropsTransitionChild2}>
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                  <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <RiQuestionFill
+                  <div className="flex flex-col items-start">
+                    <div className="flex w-full h-10 p-2 items-center justify-start rounded-full border-blue-400 border-[1px]">
+                      <RiInformationFill
                         className={classIcon(color)}
                         aria-hidden="true"
                       />
-                    </div>
-                    <div className="mt-3 w-full text-center sm:mt-0 sm:text-left">
+
                       <Dialog.Title
                         as="h3"
-                        className="text-base font-semibold leading-6 text-gray-900"
+                        className="flex items-center mx-2 font-semibold leading-6 text-gray-900"
                       >
                         {title}
                       </Dialog.Title>
-
+                    </div>
+                    <div className="mt-2 w-full text-center">
                       {message && (
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">{message}</p>

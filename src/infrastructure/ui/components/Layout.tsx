@@ -8,8 +8,8 @@ import Menus from './Menu'
 import ButtonTheme from './ButtonTheme'
 import { LanguageSelector } from './LanguageSelector'
 import Container from './Container'
-import styles from '../styles/Layout.module.css'
 import useOpenMenu from '../hooks/useOpenMenu'
+import styles from '../styles/Layout.module.css'
 
 const appName = import.meta.env.VITE_APP_TITLE
 

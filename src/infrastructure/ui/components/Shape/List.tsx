@@ -6,9 +6,12 @@ import orderBy from 'lodash/orderBy'
 import { IdShape, Shape, TypeShape } from '../../../../domain/models/Shape'
 import ShapeList from './ShapeList'
 import { PositionsT } from '../../utils/interfaces'
+import { useTranslation } from '../../utils/i18n'
 import useShapes from '../../hooks/useShapes'
 
 const List = memo(({ shapesInit = [] }: { shapesInit?: Shape[] }) => {
+  const { t } = useTranslation()
+
   const [shapes, setShapes] = useState<Shape[]>(shapesInit)
 
   const { add, remove } = useShapes()
@@ -31,7 +34,14 @@ const List = memo(({ shapesInit = [] }: { shapesInit?: Shape[] }) => {
     add(index, position, type, shapes, setShapes)
 
   return (
-    <div role="list" className="w-full h-full flex items-center justify-center">
+    <div
+      role="list"
+      className="w-full h-full flex flex-col items-center justify-center"
+    >
+      <div className="w-full h-10 mb-4 flex items-center justify-center bg-blue-500 dark:bg-blue-700 text-white">
+        <h2>{t('Figure Manager')}</h2>
+      </div>
+
       <div className="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
         <ShapeList shapes={shapes} onAdd={actionAdd} onDelete={actionDelete} />
       </div>

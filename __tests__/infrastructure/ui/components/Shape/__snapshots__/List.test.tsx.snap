@@ -5,9 +5,16 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
   aria-hidden="true"
 >
   <div
-    class="w-full h-full flex items-center justify-center"
+    class="w-full h-full flex flex-col items-center justify-center"
     role="list"
   >
+    <div
+      class="w-full h-10 mb-4 flex items-center justify-center bg-blue-500 dark:bg-blue-700 text-white"
+    >
+      <h2>
+        Figure Manager
+      </h2>
+    </div>
     <div
       class="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 "
     >
@@ -132,9 +139,16 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
 exports[`List > should call the onDelete callback when a shape is deleted 1`] = `
 <div>
   <div
-    class="w-full h-full flex items-center justify-center"
+    class="w-full h-full flex flex-col items-center justify-center"
     role="list"
   >
+    <div
+      class="w-full h-10 mb-4 flex items-center justify-center bg-blue-500 dark:bg-blue-700 text-white"
+    >
+      <h2>
+        Figure Manager
+      </h2>
+    </div>
     <div
       class="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 "
     >
