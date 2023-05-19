@@ -1,16 +1,20 @@
 {
   "name": "shapes",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
+    "preview": "vite preview --host",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "test": "vitest",
     "prettier": "prettier --write ./src",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
-    "preview": "vite preview --host"
+    "docker:run": "docker compose -f ./compose.yaml",
+    "docker:up": "npm run docker:run -- up -d",
+    "docker:build": "npm run docker:run build",
+    "docker:command": "npm run docker:run exec -ti --"    
   },
   "dependencies": {
     "@headlessui/react": "1.7.14",
