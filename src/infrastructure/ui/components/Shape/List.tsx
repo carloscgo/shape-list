@@ -45,6 +45,19 @@ const List = memo(({ shapesInit = [] }: { shapesInit?: Shape[] }) => {
       <div className="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
         <ShapeList shapes={shapes} onAdd={actionAdd} onDelete={actionDelete} />
       </div>
+
+      <div className="w-full h-5 mt-4 flex items-center justify-start text-black dark:text-white">
+        <p>
+          Developed by{' '}
+          <a
+            href="https://github.com/carloscgo/shape-list"
+            className="hover:text-blue-700 underline"
+            target="_blank"
+          >
+            Carlos Camacho
+          </a>
+        </p>
+      </div>
     </div>
   )
 })

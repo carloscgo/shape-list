@@ -132,6 +132,21 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
         />
       </div>
     </div>
+    <div
+      class="w-full h-5 mt-4 flex items-center justify-start text-black dark:text-white"
+    >
+      <p>
+        Developed by
+         
+        <a
+          class="hover:text-blue-700 underline"
+          href="https://github.com/carloscgo/shape-list"
+          target="_blank"
+        >
+          Carlos Camacho
+        </a>
+      </p>
+    </div>
   </div>
 </div>
 `;
@@ -180,6 +195,21 @@ exports[`List > should call the onDelete callback when a shape is deleted 1`] = 
           </svg>
         </div>
       </div>
+    </div>
+    <div
+      class="w-full h-5 mt-4 flex items-center justify-start text-black dark:text-white"
+    >
+      <p>
+        Developed by
+         
+        <a
+          class="hover:text-blue-700 underline"
+          href="https://github.com/carloscgo/shape-list"
+          target="_blank"
+        >
+          Carlos Camacho
+        </a>
+      </p>
     </div>
   </div>
 </div>
