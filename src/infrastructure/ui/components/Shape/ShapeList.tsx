@@ -22,7 +22,11 @@ const ShapeList = memo(({ shapes, onAdd, onDelete }: PropsShapeList) => {
 
   return (
     <>
-      <div role="list" className="flex w-full p-10 overflow-auto">
+      <div
+        role="list"
+        aria-label="container shapes"
+        className="flex w-full p-10 overflow-auto"
+      >
         {shapes.map((shape: Shape) => (
           <Item
             key={`${shape.index}${shape.type}-shape`}

@@ -36,10 +36,11 @@ const List = memo(({ shapesInit = [] }: { shapesInit?: Shape[] }) => {
   return (
     <div
       role="list"
+      aria-label="container-main-shapes"
       className="w-full h-full flex flex-col items-center justify-center"
     >
-      <div className="w-full h-10 mb-4 flex items-center justify-center bg-blue-500 dark:bg-blue-700 text-white">
-        <h2>{t('Figure Manager')}</h2>
+      <div className="w-full h-10 mb-4 flex items-center justify-center bg-blue-600 dark:bg-blue-800 text-white">
+        <h2 aria-label="header-title">{t('Figure Manager')}</h2>
       </div>
 
       <div className="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
@@ -53,6 +54,7 @@ const List = memo(({ shapesInit = [] }: { shapesInit?: Shape[] }) => {
             href="https://github.com/carloscgo/shape-list"
             className="hover:text-blue-700 underline"
             target="_blank"
+            aria-label="developer"
           >
             Carlos Camacho
           </a>

@@ -5,13 +5,16 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
   aria-hidden="true"
 >
   <div
+    aria-label="container-main-shapes"
     class="w-full h-full flex flex-col items-center justify-center"
     role="list"
   >
     <div
-      class="w-full h-10 mb-4 flex items-center justify-center bg-blue-500 dark:bg-blue-700 text-white"
+      class="w-full h-10 mb-4 flex items-center justify-center bg-blue-600 dark:bg-blue-800 text-white"
     >
-      <h2>
+      <h2
+        aria-label="header-title"
+      >
         Figure Manager
       </h2>
     </div>
@@ -19,6 +22,7 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
       class="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 "
     >
       <div
+        aria-label="container shapes"
         class="flex w-full p-10 overflow-auto"
         role="list"
       >
@@ -139,6 +143,7 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
         Developed by
          
         <a
+          aria-label="developer"
           class="hover:text-blue-700 underline"
           href="https://github.com/carloscgo/shape-list"
           target="_blank"
@@ -154,13 +159,16 @@ exports[`List > should call the onAdd callback when a shape is added 1`] = `
 exports[`List > should call the onDelete callback when a shape is deleted 1`] = `
 <div>
   <div
+    aria-label="container-main-shapes"
     class="w-full h-full flex flex-col items-center justify-center"
     role="list"
   >
     <div
-      class="w-full h-10 mb-4 flex items-center justify-center bg-blue-500 dark:bg-blue-700 text-white"
+      class="w-full h-10 mb-4 flex items-center justify-center bg-blue-600 dark:bg-blue-800 text-white"
     >
-      <h2>
+      <h2
+        aria-label="header-title"
+      >
         Figure Manager
       </h2>
     </div>
@@ -168,6 +176,7 @@ exports[`List > should call the onDelete callback when a shape is deleted 1`] = 
       class="bg-gray-100 dark:bg-[#1E293B] w-full h-full flex items-center justify-center shadow rounded-lg p-4 sm:p-6 xl:p-8 "
     >
       <div
+        aria-label="container shapes"
         class="flex w-full p-10 overflow-auto"
         role="list"
       >
@@ -203,6 +212,7 @@ exports[`List > should call the onDelete callback when a shape is deleted 1`] = 
         Developed by
          
         <a
+          aria-label="developer"
           class="hover:text-blue-700 underline"
           href="https://github.com/carloscgo/shape-list"
           target="_blank"

@@ -41,6 +41,7 @@ export default function ButtonTheme() {
       <div
         onClick={() => setDark(Themes.dark)}
         aria-label="moon icon"
+        role="button"
         ref={moon}
         className="moon cursor-pointer text-white hover:text-blue-500 dark:hover:text-[#38BDF8]"
       >
@@ -49,6 +50,7 @@ export default function ButtonTheme() {
       <div
         onClick={() => setDark(Themes.light)}
         aria-label="sun icon"
+        role="button"
         ref={sun}
         className="sun cursor-pointer hidden text-white hover:text-blue-500 dark:hover:text-[#38BDF8]"
       >

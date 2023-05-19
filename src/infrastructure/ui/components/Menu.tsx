@@ -16,7 +16,7 @@ export default function Menu({ maxSidebar, miniSidebar }: PropsMenu) {
     {
       label: t('Home'),
       url: routes.home,
-      icon: <BiHome />,
+      icon: <BiHome alt={t('Home')} />,
     },
   ]
 
